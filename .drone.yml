@@ -13,7 +13,7 @@ steps:
   - docker login -u 'robot$droneci' -p $DOCKER_PASSWORD harbor.dsrd.libraries.psu.edu
   - docker build -t harbor.dsrd.libraries.psu.edu/public/drone-utils:$DRONE_BUILD_NUMBER . 
   - docker tag harbor.dsrd.libraries.psu.edu/public/drone-utils:$DRONE_BUILD_NUMBER harbor.dsrd.libraries.psu.edu/public/drone-utils:latest
-  - docker push harbor.dsrd.libraries.psu.edu/public/drone-utils:$DRONE_BUILD_NUMBER
+  - docker push harbor.dsrd.libraries.psu.edu/public/drone-utils
   when:
     events: [ tags ]
     branches: [ master ]
@@ -27,6 +27,6 @@ volumes:
     path: /var/run/docker.sock
 ---
 kind: signature
-hmac: 444f229dbd31038265e1dcbc62ead2b0ce81a3a450a0ed28a3452111c50f44e2
+hmac: 8d0d05ef00da11125a5a073a92059638319400771396622403b78ced2b96076c
 
 ...
