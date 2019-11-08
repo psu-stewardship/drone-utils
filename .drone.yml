@@ -10,7 +10,7 @@ steps:
       from_secret: DOCKER_PUBLIC_PASSWORD
   commands:
   - export DOCKER_HOST=unix:///var/run/host.sock
-  - docker login -u 'robot$drone' -p $DOCKER_PASSWORD harbor.dsrd.libraries.psu.edu
+  - docker login -u 'robot$droneci' -p $DOCKER_PASSWORD harbor.dsrd.libraries.psu.edu
   - docker build -t harbor.dsrd.libraries.psu.edu/public/drone-utils:$DRONE_BUILD_NUMBER . 
   - docker tag harbor.dsrd.libraries.psu.edu/public/drone-utils:$DRONE_BUILD_NUMBER harbor.dsrd.libraries.psu.edu/public/drone-utils:latest
   - docker push harbor.dsrd.libraries.psu.edu/public/drone-utils:$DRONE_BUILD_NUMBER
