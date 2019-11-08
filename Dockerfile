@@ -1,7 +1,7 @@
 FROM alpine:3.9
 
 RUN apk add --no-cache \
-    git py3-pip curl
+    git py3-pip docker curl
 
 RUN pip3 install pipenv
 COPY Pipfile Pipfile.lock /
