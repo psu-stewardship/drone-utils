@@ -1,7 +1,7 @@
 FROM alpine:3.9
 
 RUN apk add --no-cache \
-    git py3-pip docker curl
+    git py3-pip docker curl openssh bash
 
 COPY requirements.txt /
 RUN pip3 install -r requirements.txt
