@@ -31,7 +31,7 @@ jobs:
 
 workflows:
   version: 2
-  scholarsphere:
+  drone_utils:
     jobs:
       - build_latest:
         filters:
