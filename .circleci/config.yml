@@ -14,7 +14,8 @@ jobs:
     steps:
     - setup_remote_docker
     - checkout
-    - docker/check
+    - docker/check:
+        registry: $REGISTRY_HOST
     - docker/build:
         image: $REGISTRY_URL
         registry: $REGISTRY_HOST
