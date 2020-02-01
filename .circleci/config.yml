@@ -2,38 +2,29 @@ version: 2.1
 
 orbs:
   slack: circleci/slack@3.4.2
+  docker: circleci/docker@0.5.20
 
 jobs:
-  build_latest:
-    docker:
-      - image: devago/docker-compose
+  build-and-push:
     environment:
       REGISTRY_HOST: harbor.dsrd.libraries.psu.edu
       REGISTRY_URL: harbor.dsrd.libraries.psu.edu/public/drone-utils
-      DOCKER_USERNAME: 'robot$circleci'
+      DOCKER_LOGIN: 'robot$circleci'
     steps:
     - setup_remote_docker
     - checkout
-    - run:
-        name: "Building the Thing"
-        command: |
-          docker build -t $REGISTRY_URL:$CIRCLE_BUILD_NUM .
-    - run:
-        name: "Publishing the image"
-        command: |
-          docker build -t $REGISTRY_URL:$CIRCLE_BUILD_NUM .
-          docker tag $REGISTRY_URL:$CIRCLE_BUILD_NUM $REGISTRY_URL:latest
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $REGISTRY_HOST
-          docker push $REGISTRY_URL:$CIRCLE_BUILD_NUM
-          docker push $REGISTRY_URL:latest
-    - slack/notify
+    - docker/check
+    - docker/build:
+        image: $REGISTRY_URL
+    - docker/push:
+        image: $REGISTRY_URL
 
 
 workflows:
   version: 2
   drone_utils:
     jobs:
-      - build_latest:
+      - build-and-push:
         filters:
           branches:
             only:
