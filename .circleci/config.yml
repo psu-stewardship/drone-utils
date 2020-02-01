@@ -17,8 +17,10 @@ jobs:
     - docker/check
     - docker/build:
         image: $REGISTRY_URL
+        registry: $REGISTRY_HOST
     - docker/push:
         image: $REGISTRY_URL
+        registry: $REGISTRY_HOST
 
 
 workflows:
