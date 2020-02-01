@@ -9,7 +9,7 @@ jobs:
     executor: docker/docker
     environment:
       REGISTRY_HOST: harbor.dsrd.libraries.psu.edu
-      REGISTRY_URL: harbor.dsrd.libraries.psu.edu/public/drone-utils
+      REGISTRY_URL: public/drone-utils
       DOCKER_LOGIN: 'robot$circleci'
     steps:
     - setup_remote_docker
