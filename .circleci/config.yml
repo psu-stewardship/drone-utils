@@ -10,7 +10,7 @@ jobs:
     environment:
       REGISTRY_HOST: harbor.k8s.libraries.psu.edu
       REGISTRY_URL: public/drone-utils
-      DOCKER_LOGIN: 'robot$circleci'
+      DOCKER_LOGIN: 'robot$circleci-public'
     steps:
     - setup_remote_docker
     - checkout
